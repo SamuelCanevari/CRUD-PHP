@@ -20,7 +20,7 @@
             $endereco = $_POST['endereco'];
             $telefone = $_POST['telefone'];
             $email = $_POST['email'];
-            $data_nascimento = $_POST['data_nascimento'];;
+            $data_nascimento = $_POST['data_nascimento'];
 
             $upload_nome_arquivo = basename($_FILES['arquivo']['name']);
             $upload_diretorio = "uploads/";

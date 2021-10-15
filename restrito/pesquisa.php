@@ -42,7 +42,6 @@
                             <th scope="col">Telefone</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Data de nascimento</th>
-                            <th scope="col">Arquivo</th>
                             <th scope="col">Opções</th>
 
                         </tr>
@@ -57,7 +56,6 @@
                             $telefone = $linha["telefone"];
                             $email = $linha["email"];
                             $data_nascimento = $linha["data_nascimento"];
-                            $arquivo = $linha['arquivo'];
 
                             echo "<tr>
                                 <th scope='row'>$nome</th>
@@ -65,7 +63,6 @@
                                 <td>$telefone</td>
                                 <td>$email</td>
                                 <td>$data_nascimento</td>
-                                <td>$arquivo</td>
                                 <td>
                                 <a href='update.php?id=$cod_pessoa'><button type='button' class='btn btn-success btn-sm'>Editar</button></a>
                                 <a href='#1'><button type='button' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#modal_confirma' onClick=" . '"' . "get_data($cod_pessoa, '$nome')" .'"' .">Deletar</button></a>
