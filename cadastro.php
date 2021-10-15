@@ -15,7 +15,7 @@
         <br><h1>Cadastro</h1><br>
         <div class="row">
             <div class="col">
-                <form action="cadastro_script.php" method="POST">
+                <form action="cadastro_script.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nome" class="form-label">Nome completo</label>
                         <input type="text" class="form-control" name="nome"><br>
@@ -35,6 +35,10 @@
                     <div class="form-group">
                         <label for="data" class="form-label">Data de nascimento</label>
                         <input type="date" class="form-control" name="data_nascimento"><br>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Arquivo</label>
+                        <input type="file" class="form-control" name="arquivo"><br>
                     </div>
                     <div class="form-group">
                         <a href="inicio.php" ><button type="button" class="btn btn-dark">Voltar</button></a>

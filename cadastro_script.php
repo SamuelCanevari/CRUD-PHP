@@ -20,10 +20,15 @@
             $endereco = $_POST['endereco'];
             $telefone = $_POST['telefone'];
             $email = $_POST['email'];
-            $data_nascimento = $_POST['data_nascimento'];
+            $data_nascimento = $_POST['data_nascimento'];;
 
-            $sql = "INSERT INTO `pessoas` (`nome`, `endereco`, `telefone`, `email`, `data_nascimento`) 
-            VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento')";
+            $upload_nome_arquivo = basename($_FILES['arquivo']['name']);
+            $upload_diretorio = "uploads/";
+            $upload_arquivo_final = sha1(uniqid(time())) . '.' . $upload_nome_arquivo;
+            $upload_result = move_uploaded_file($_FILES['arquivo']['tmp_name'], $upload_diretorio.$upload_arquivo_final);
+
+            $sql = "INSERT INTO `pessoas` (`nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `arquivo`) 
+            VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento', '$upload_arquivo_final')";
 
             if (mysqli_query($conn, $sql)) {
                 message("$nome cadastrado com sucesso!", "success");
