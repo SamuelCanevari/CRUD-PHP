@@ -1,3 +1,5 @@
+<?php include "../validar.php"; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -30,6 +32,11 @@
                         <p class="card-text">Listagem, editar e exluir.</p>
                         <a href="pesquisa.php"><button type="button" class="btn btn-primary btn-lg">Consultar</button></a>
                     </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <br><a href="../logout.php"><button type="button" class="btn btn-danger btn-lg">Logout</button></a>
                 </div>
             </div>
         </div>
