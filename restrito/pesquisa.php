@@ -1,5 +1,16 @@
+<?php include "../validar.php";
+
+
+function mostra_data($data)
+{
+    $d = explode("-", $data);
+    $escreve = $d[2] . "/" . $d[1] . "/" . $d[0];
+    return $escreve;
+}
+
+?>
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -14,11 +25,9 @@
     <?php
 
     $pesquisa = $_POST["busca"] ?? "";
-
     include "conexao.php";
 
     $sql = "SELECT * FROM pessoas WHERE nome LIKE '%$pesquisa%'";
-
     $dados = mysqli_query($conn, $sql);
 
     ?>
@@ -26,7 +35,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <br><h1>Pesquisar</h1><br>
+                <br>
+                <h1>Pesquisar</h1><br>
                 <form action="pesquisa.php" method="POST">
                     <div class="input-group">
                         <input type="search" class="form-control rounded" placeholder="Digite um nome para pesquisar..." aria-label="Search" name="busca" />
@@ -43,7 +53,6 @@
                             <th scope="col">E-mail</th>
                             <th scope="col">Data de nascimento</th>
                             <th scope="col">Opções</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -56,6 +65,7 @@
                             $telefone = $linha["telefone"];
                             $email = $linha["email"];
                             $data_nascimento = $linha["data_nascimento"];
+                            $data_nascimento = mostra_data($data_nascimento);
 
                             echo "<tr>
                                 <th scope='row'>$nome</th>
@@ -65,7 +75,7 @@
                                 <td>$data_nascimento</td>
                                 <td>
                                 <a href='update.php?id=$cod_pessoa'><button type='button' class='btn btn-success btn-sm'>Editar</button></a>
-                                <a href='#1'><button type='button' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#modal_confirma' onClick=" . '"' . "get_data($cod_pessoa, '$nome')" .'"' .">Deletar</button></a>
+                                <a href='#1'><button type='button' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#modal_confirma' onClick=" . '"' . "get_data($cod_pessoa, '$nome')" . '"' . ">Deletar</button></a>
                                 </td>
                             </tr>";
                         }
@@ -73,7 +83,8 @@
                     </tbody>
                 </table>
                 <br>
-                <a href="inicio.php" ><button type="button" class="btn btn-dark">Voltar</button></a>
+                <a href="index.php"><button type="button" class="btn btn-dark">Voltar</button></a>
+                <a href="../logout.php"><button type="button" class="btn btn-danger">Desconectar</button></a>
             </div>
         </div>
         <div class="modal" id="modal_confirma">
@@ -89,25 +100,25 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                            <input type="hidden" name="id" id="cod_pessoa" value=""/>
-                            <input type="hidden" name="nome" id="nome_pessoa_1" value=""/>
-                            <input type="submit" class="btn btn-primary" value="Sim"/>
+                            <input type="hidden" name="id" id="cod_pessoa" value="" />
+                            <input type="hidden" name="nome" id="nome_pessoa_1" value="" />
+                            <input type="submit" class="btn btn-primary" value="Sim" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div>        
+        <div>
 
-        <script type="text/javascript">
-            function get_data(id, nome){
-                document.getElementById('nome_pessoa').innerHTML = nome;
-                document.getElementById('cod_pessoa').value = id;
-                document.getElementById('nome_pessoa_1').value = nome;
-            }
-        </script>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <script type="text/javascript">
+                function get_data(id, nome) {
+                    document.getElementById('nome_pessoa').innerHTML = nome;
+                    document.getElementById('cod_pessoa').value = id;
+                    document.getElementById('nome_pessoa_1').value = nome;
+                }
+            </script>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

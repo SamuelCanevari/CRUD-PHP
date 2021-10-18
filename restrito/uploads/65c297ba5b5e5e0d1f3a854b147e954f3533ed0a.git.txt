@@ -1,0 +1,8 @@
+
+git add . 
+git commit -m "comentario"
+git push origin nome_branch
+
+git branch nome_branch -> criar branch
+git branch -> listagem branchs
+git checkout nome_branch -> setar branch

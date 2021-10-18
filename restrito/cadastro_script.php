@@ -1,3 +1,5 @@
+<?php include "../validar.php"; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -21,11 +23,14 @@
             $telefone = $_POST['telefone'];
             $email = $_POST['email'];
             $data_nascimento = $_POST['data_nascimento'];
+            $upload_arquivo_final = "";
 
-            $upload_nome_arquivo = basename($_FILES['arquivo']['name']);
-            $upload_diretorio = "uploads/";
-            $upload_arquivo_final = sha1(uniqid(time())) . '.' . $upload_nome_arquivo;
-            $upload_result = move_uploaded_file($_FILES['arquivo']['tmp_name'], $upload_diretorio.$upload_arquivo_final);
+            if ($_FILES['arquivo']['tmp_name'] != "") {
+                $upload_nome_arquivo = basename($_FILES['arquivo']['name']);
+                $upload_diretorio = "uploads/";
+                $upload_arquivo_final = sha1(uniqid(time())) . '.' . $upload_nome_arquivo;
+                $upload_result = move_uploaded_file($_FILES['arquivo']['tmp_name'], $upload_diretorio . $upload_arquivo_final);
+            }
 
             $sql = "INSERT INTO `pessoas` (`nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `arquivo`) 
             VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento', '$upload_arquivo_final')";
@@ -36,8 +41,7 @@
                 message("$nome não cadastrado", "danger");
             }
             ?>
-            <a href="inicio.php"><button type="button" class="btn btn-info">Início</button></a>
-
+            <a href="index.php"><button type="button" class="btn btn-info">Início</button></a>
         </div>
 
     </div>
