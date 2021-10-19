@@ -19,12 +19,23 @@
             include "conexao.php";
 
             $nome = $_POST['nome'];
+            if ($nome == "") {
+                $nome = "Não informado";
+            }
             $endereco = $_POST['endereco'];
+            if ($endereco == "") {
+                $endereco = "Não informado";
+            }
             $telefone = $_POST['telefone'];
+            if ($telefone == "") {
+                $telefone = "Não informado";
+            }
             $email = $_POST['email'];
+            if ($email == "") {
+                $email = "Não informado";
+            }
             $data_nascimento = $_POST['data_nascimento'];
             $upload_arquivo_final = "";
-
             if ($_FILES['arquivo']['tmp_name'] != "") {
                 $upload_nome_arquivo = basename($_FILES['arquivo']['name']);
                 $upload_diretorio = "uploads/";

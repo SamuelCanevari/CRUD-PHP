@@ -19,10 +19,23 @@
             include "conexao.php";
 
             $id = $_POST['id'];
+
             $nome = $_POST['nome'];
+            if ($nome == "") {
+                $nome = "Não informado";
+            }
             $endereco = $_POST['endereco'];
+            if ($endereco == "") {
+                $endereco = "Não informado";
+            }
             $telefone = $_POST['telefone'];
+            if ($telefone == "") {
+                $telefone = "Não informado";
+            }
             $email = $_POST['email'];
+            if ($email == "") {
+                $email = "Não informado";
+            }
             $data_nascimento = $_POST['data_nascimento'];
 
             $sql = "UPDATE `pessoas` set `nome` = '$nome', `endereco` = '$endereco', `telefone` = '$telefone', `email` = '$email', `data_nascimento` = '$data_nascimento' WHERE cod_pessoa = $id";
@@ -33,7 +46,7 @@
                 message("$nome não alterado", "danger");
             }
             ?>
-            <a href="pesquisa.php" ><button type="button" class="btn btn-dark">Voltar</button></a>
+            <a href="pesquisa.php"><button type="button" class="btn btn-dark">Voltar</button></a>
         </div>
 
     </div>

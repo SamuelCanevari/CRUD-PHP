@@ -22,14 +22,13 @@ function mostra_data($data)
 </head>
 
 <body>
-    <?php
+    <?php 
 
     $pesquisa = $_POST["busca"] ?? "";
     include "conexao.php";
 
     $sql = "SELECT * FROM pessoas WHERE nome LIKE '%$pesquisa%'";
-    $dados = mysqli_query($conn, $sql);
-
+    $dados = mysqli_query($conn, $sql); 
     ?>
 
     <div class="container">

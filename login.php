@@ -14,6 +14,9 @@
             background-color: #dcdbff;
             padding: 20px;
         }
+        #cadastro {
+            margin-top: 20px;
+        }
 
     </style>
 </head>
@@ -34,19 +37,34 @@
                         <input type="password" class="form-control" name="senha">
                     </div>
                     <button type="submit" class="btn btn-primary">Acessar</button>
+                    <p id="cadastro">Ainda não tem cadastro? <a href="cadastro_user.php">clique aqui</a></p>
                 </form>
                 <?php
 
                 if (isset($_POST['login'])) {
                     $login = $_POST['login'];
-                    $senha = $_POST['senha'];
+                    $senha = md5($_POST['senha']);
 
-                    if (($login == "admin") and ($senha == "admin")) {
-                        session_start();
-                        $_SESSION['login'] = "Name";
-                        header("location: restrito/index.php");
+                    include "restrito/conexao.php";
+                    $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha'";
+
+                    if ($result = mysqli_query($conn, $sql)) {
+                        $num_registros = mysqli_num_rows($result);
+                        if ($num_registros == 1) {
+                            $linha = mysqli_fetch_assoc($result);
+
+                            if (($login == $linha['login']) and ($senha == $linha['senha'])) {
+                                session_start();
+                                $_SESSION['login'] = "Samuel";
+                                header("location: restrito");
+                            } else {
+                                echo "Login inválidos";
+                            }
+                        } else {
+                            echo "Login ou senha não encontrados ou inválidos";
+                        }
                     } else {
-                        echo "Dados inválidos";
+                        echo "Nenhum dado encontrado no banco";
                     }
                 }
                 ?>

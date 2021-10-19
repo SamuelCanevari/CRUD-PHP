@@ -15,13 +15,14 @@
 
 <body>
     <div class="container">
-    <br><h1>Cadastro</h1><br>
+        <br>
+        <h1>Cadastro</h1><br>
         <div class="row">
             <div class="col">
                 <form action="cadastro_script.php" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="nome" class="form-label">Nome completo</label>
-                        <input type="text" class="form-control" name="nome">
+                    <div class="was-validated">
+                        <label for="validationTextarea">Nome completo</label>
+                        <input type="text" class="form-control is-invalid" required name="nome">
                     </div>
                     <div class="form-group">
                         <label for="endereço" class="form-label">Endereço</label>
@@ -45,7 +46,7 @@
                     </div><br>
                     <div class="form-group">
                         <a href="index.php"><button type="button" class="btn btn-dark">Voltar</button></a>
-                        <input type="submit" class="btn btn-success" value="Cadastrar"/>
+                        <input type="submit" class="btn btn-success" value="Cadastrar" />
                         <a href="../logout.php"><button type="button" class="btn btn-danger">Desconectar</button></a>
                     </div>
                 </form>

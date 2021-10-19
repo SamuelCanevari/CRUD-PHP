@@ -1,4 +1,7 @@
-<?php include "../validar.php"; ?>
+<?php
+include "../validar.php";
+include "conexao.php";
+?>
 
 <!doctype html>
 <html lang="en">
@@ -14,7 +17,19 @@
 
 <body>
     <div class="container">
-        <br><h1>Início</h1><br>
+        <?php
+
+        $sql = "SELECT * FROM `usuarios` WHERE id_usuario = 9";
+
+        $dados = mysqli_query($conn, $sql);
+        $linha =  mysqli_fetch_assoc($dados);
+
+        $user = $linha['nome'];
+        echo "<h1>Bem vindo $user";
+
+        ?>
+        <br>
+        <h1>Início</h1><br>
         <div class="row">
             <div class="col-sm-6">
                 <div class="card text-center">
