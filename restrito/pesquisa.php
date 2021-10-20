@@ -51,6 +51,7 @@ function mostra_data($data)
                             <th scope="col">Telefone</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Data de nascimento</th>
+                            <th scope="col">Arquivo</th>
                             <th scope="col">Opções</th>
                         </tr>
                     </thead>

@@ -1,10 +1,11 @@
 <?php
 
 session_start();
-if (isset($_SESSION['login'])) {
-    $user = $_SESSION['login'];
+if (isset($_SESSION['user'])) {
+    $id_user = $_SESSION['user'];
 } else {
     session_destroy();
-    header("location: ../login.php?msg=Você foi expulso");
+    header("location: ../index.php?msg=Você foi expulso");
 }
+
 ?>

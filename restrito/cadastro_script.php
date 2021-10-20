@@ -18,22 +18,23 @@
 
             include "conexao.php";
 
-            $nome = $_POST['nome'];
+            $nome = clear($conn, $_POST['nome']);
             if ($nome == "") {
                 $nome = "Não informado";
             }
-            $endereco = $_POST['endereco'];
+            $endereco = clear($conn, $_POST['endereco']);
             if ($endereco == "") {
                 $endereco = "Não informado";
             }
-            $telefone = $_POST['telefone'];
+            $telefone = clear($conn, $_POST['telefone']);
             if ($telefone == "") {
                 $telefone = "Não informado";
             }
-            $email = $_POST['email'];
+            $email = clear($conn, $_POST['email']);
             if ($email == "") {
                 $email = "Não informado";
             }
+
             $data_nascimento = $_POST['data_nascimento'];
             $upload_arquivo_final = "";
             if ($_FILES['arquivo']['tmp_name'] != "") {

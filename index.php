@@ -12,7 +12,9 @@
     <style>
         #box {
             background-color: #dcdbff;
-            padding: 20px;
+            width: 400px;
+            padding: 20px 40px 20px 40px;
+            margin: 100px auto 0 auto;
         }
         #cadastro {
             margin-top: 20px;
@@ -24,19 +26,18 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-4"></div>
             <div class="col-4" id="box">
                 <h1>Login</h1><br>
-                <form action="login.php" method="POST">
+                <form action="index.php" method="POST">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Login</label>
-                        <input type="text" class="form-control" name="login">
+                        <label for="exampleInputEmail1" class="form-label">Insira login</label>
+                        <input type="text" class="form-control" required name="login">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Senha</label>
-                        <input type="password" class="form-control" name="senha">
+                        <label for="exampleInputPassword1" class="form-label">Insira senha</label>
+                        <input type="password" class="form-control" required name="senha">
                     </div>
-                    <button type="submit" class="btn btn-primary">Acessar</button>
+                    <button type="submit" class="btn btn-primary">Logar</button>
                     <p id="cadastro">Ainda não tem cadastro? <a href="cadastro_user.php">clique aqui</a></p>
                 </form>
                 <?php
@@ -55,16 +56,12 @@
 
                             if (($login == $linha['login']) and ($senha == $linha['senha'])) {
                                 session_start();
-                                $_SESSION['login'] = "Samuel";
+                                $_SESSION['user'] = $linha['id_usuario'];
                                 header("location: restrito");
-                            } else {
-                                echo "Login inválidos";
                             }
                         } else {
-                            echo "Login ou senha não encontrados ou inválidos";
+                            echo "login ou senha inválidos";
                         }
-                    } else {
-                        echo "Nenhum dado encontrado no banco";
                     }
                 }
                 ?>

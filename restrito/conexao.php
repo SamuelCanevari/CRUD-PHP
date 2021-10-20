@@ -15,5 +15,11 @@
         echo "<div class='alert alert-$tipo' role='alert'>$texto
         </div>";
     }
+    function clear($conexao, $texto_puro) {
+        $texto = mysqli_real_escape_string($conexao, $texto_puro);
+        $texto = htmlspecialchars($texto);
+        return $texto;
+    }
+
 
 ?>

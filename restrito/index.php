@@ -19,13 +19,14 @@ include "conexao.php";
     <div class="container">
         <?php
 
-        $sql = "SELECT * FROM `usuarios` WHERE id_usuario = 9";
+        $sql = "SELECT * FROM `usuarios` WHERE id_usuario = ".$_SESSION['user'];
+        
 
         $dados = mysqli_query($conn, $sql);
         $linha =  mysqli_fetch_assoc($dados);
 
-        $user = $linha['nome'];
-        echo "<h1>Bem vindo $user";
+        $u = $linha['nome'];
+        echo "<h1>Bem vindo $u";
 
         ?>
         <br>
